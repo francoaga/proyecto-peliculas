@@ -1,4 +1,0 @@
-.mask {
-    -webkit-mask-image: radial-gradient(ellipse, rgb(34, 1, 1) 71%, rgba(0, 0, 0, 0.616) 80%);
-    mask-image: radial-gradient(ellipse, rgb(43, 1, 1) 70%, rgba(48, 47, 47, 0.342));
-}
