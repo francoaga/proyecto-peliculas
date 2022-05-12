@@ -18,12 +18,21 @@
   background-color: #E0DDAA;
 }
 
-.linkyellow {
-  color: #EEEDDE 
+
+.btn-primary {
+  background-color: #141E27 !important;
+  border-color: #141E27 !important;
 }
-.linkyellow:hover {
-  color: #E0DDAA
+
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white !important;
 }
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #E0DDAA !important
+}
+
 
 .bold {
   font-weight: bold;
@@ -47,11 +56,4 @@
   -webkit-transform: scale(1.1);
   /* Safari 3-8 */
   transform: scale(1.1);
-}
-
-/* CSS FOOTER Lean*/
-
-.container-fluid {
-  background-color: #141e27;
-  
 }
