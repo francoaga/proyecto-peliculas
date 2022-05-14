@@ -19,5 +19,5 @@ window.location.href="index.html";
 
 function volver(e) {
   event.preventDefault();
-   window.location.href="./index.html"
+   window.location.href="../index.html"
 }

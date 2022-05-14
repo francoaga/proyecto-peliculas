@@ -1,0 +1,30 @@
+.bg-home{
+    background-color: rgba(10, 19, 46, 0.911);
+    height: 120vh;
+    width: 100%;
+  }
+
+.contenedor {
+    margin-top: 15px;
+    width: 80%;
+    height: 70%;
+} 
+
+#bg-btn {
+    background-color: #0d6efd;
+}
+
+#bg-btn:hover {
+    color: aliceblue;
+    background-color: #0650c070;
+}
+
+.icono:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.icono img{
+    width: 25px;
+    height: 25px;
+}
