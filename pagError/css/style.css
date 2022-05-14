@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(../img/interestelar-273.jpg);
+    background-size: 1920px;
+}
+
+
+
+.text {
+    position: absolute;
+    left: 1%;
+    top: 9%;
+    background: none;
+    color: #fafafa;
+    
+}
+
+.boton {
+    position: absolute;
+    top: 43%;
+    left: 7%;
+    border-radius: 15%;
+    opacity: 0.86;
+}
+
+
