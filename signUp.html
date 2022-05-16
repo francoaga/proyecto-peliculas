@@ -22,28 +22,29 @@
           <div class="d-flex justify-content-center">
             <img src="./images/login/logo.png" width="200" />
           </div>
-          <form onsubmit="signup()">
+          <form onsubmit="event.preventDefault(); crearUsuario()">
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
+              <label for="mail" class="form-label">Mail</label>
               <input
                 type="email"
                 required
                 class="form-control"
-                id="email"
-                aria-describedby="emailHelp"
+                id="mail"
+                aria-describedby="mailHelp"
               />
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label"
                 >Password</label
               >
-              <input type="password" required class="form-control" id="psw" />
+              <input type="password" required class="form-control" id="contraseña" />
             </div>
             <button type="submit" class="btn btn-primary me-5">
               Registrarse
             </button>
             <button onclick="volver()" class="btn btn-danger">Volver</button>
           </form>
+          <p id="result"></p>
         </div>
       </div>
     </div>
