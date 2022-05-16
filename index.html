@@ -22,16 +22,16 @@
         <div class="d-flex justify-content-center">
           <img src="./images/login/logo.png" width="200" />
         </div>
-          <form onsubmit="login()">
+          <form onsubmit="event.preventDefault(); loginmail();">
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input required type="email" class="form-control" id="email" />
+              <label for="mail" class="form-label">Mail</label>
+              <input required type="mail" class="form-control" id="mail" />
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label"
-                >Password</label
+                >Contraseña</label
               >
-              <input required type="password" class="form-control" id="psw" />
+              <input required type="password" class="form-control" id="contraseña" />
             </div>
             <button type="submit" class="btn btn-primary me-5">Ingresar</button>
             <button onclick="registrarse()" class="btn btn-warning">
@@ -48,5 +48,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   </body>
 </html>
