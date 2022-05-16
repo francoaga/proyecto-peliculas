@@ -1,5 +1,3 @@
-
-
 //Funciones generales de local storage
 function traerLocalStorage(nombreLS) {
   return JSON.parse(localStorage.getItem(nombreLS));
@@ -20,7 +18,6 @@ function admin() {
     linkadmin.classList.remove("d-none");
     linkadmin.classList.add("d-flex");
   } else {
-    console.log('entro')
     linkadmin.classList.add("d-none");
     linkadmin.classList.remove("d-flex");
   }

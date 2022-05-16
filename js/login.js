@@ -29,7 +29,6 @@ function checkInputs(mail, contraseña) {
 
 function checkIfUserExists (mail, contraseña) {
   let users = traerLocalStorage("usuarios") || [];
-  console.log('users', users)
   return users.find(usuario => usuario.mail === mail && usuario.contraseña === contraseña);
 }
 
@@ -44,16 +43,25 @@ function loginmail() {
       window.location.href = "./peliculas.html";
     } else {
       let user = checkIfUserExists(mail, contraseña);
-      console.log('user', user)
       if (user) {
         guardarLS('mailLogueado', user);
         location.href = "peliculas.html";
       } else {
-        result.innerHTML = "Usuario no existente";
+        Swal.fire({
+          icon: 'error',
+          title: 'Usuario o contraseña incorrecto',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     }
   } else {
-    result.innerHTML = "Email o contraseña incorrecto";
+    Swal.fire({
+      icon: 'error',
+      title: 'Usuario no existe',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
   limpiarLogin();
 }

@@ -1,14 +1,5 @@
-//Funcion generar ID para clases
-function generarId(length) {
-  let id = "";
-  let characters =
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-    id += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return id;
-}
+const result = document.getElementById("result");
+
 
 //Funcion que limpia el login
 function limpiarLogin() {
@@ -22,13 +13,13 @@ function traerLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 
-function guardarLS(key, value) {
+function guardarLocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
-class usuario {
-  constructor (mail, contraseña) {
-    this.id = generarId(20)
+class Usuario {
+  constructor (mail, contraseña, id) {
+    this.id = id;
     this.mail = mail;
     this.contraseña = contraseña;
   }
@@ -38,24 +29,31 @@ class usuario {
 function crearUsuario() {
   let mail = document.getElementById("mail").value;
   let contraseña = document.getElementById("contraseña").value;
-
-  let usuarios = traerLocalStorage('usuarios');
-  if (!usuarios) {
-    usuarios = [];
-  }
+  let usuarios = traerLocalStorage('usuarios') || [];
   let mailExiste = false;
   if (usuarios.length > 0) {
     mailExiste = usuarios.find(usuario => usuario.mail === mail);
   }
   if (mailExiste) {
-    result.innerHTML = "Este mail ya sido registrado"
+    Swal.fire({
+      icon: 'error',
+      title: 'Este mail ya esta registrado',
+      showConfirmButton: false,
+      timer: 1500
+    })
   } else if (mail === null || contraseña === null) {
     return;
   } else {
-    let nuevoUsuario = new usuario(mail, contraseña);
+    let nuevoUsuario = new Usuario(mail, contraseña);
     usuarios.push(nuevoUsuario);
-    guardarLS('usuarios', usuarios);
+    guardarLocalStorage('usuarios', usuarios);
     limpiarLogin();
+    Swal.fire({
+      icon: 'success',
+      title: 'Usuario registrado',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 }
 

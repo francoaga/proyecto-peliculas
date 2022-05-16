@@ -24,9 +24,9 @@
           </div>
           <form onsubmit="event.preventDefault(); crearUsuario()">
             <div class="mb-3">
-              <label for="mail" class="form-label">mail</label>
+              <label for="mail" class="form-label">Mail</label>
               <input
-                type="mail"
+                type="email"
                 required
                 class="form-control"
                 id="mail"
@@ -44,6 +44,7 @@
             </button>
             <button onclick="volver()" class="btn btn-danger">Volver</button>
           </form>
+          <p id="result"></p>
         </div>
       </div>
     </div>
