@@ -9,39 +9,84 @@ function obtenerdata() {
 obtenerdata();
 
 
-//Traigo el boton "Nuevo +"
-const botonNuevo= document.getElementById('agregar-pelicula');
-
-//Le agrego una escucha de eventos
-botonNuevo.addEventListener('click', () => {
-    console.log("Ventana Modal para agregar una nueva pelicula");
-    crearFila();
-});
+ // OPCIONES PARA MODIFICAR LAS PELICULAS
 
 //Traigo la el cuerpo de la tabla
 const cuerpoTabla= document.getElementById('tablaPeliculas');
 
 cuerpoTabla.addEventListener('click', (e) => {
-    //console.log(e);
+    const nodoFila= e.target.parentElement.parentElement.parentElement.parentElement;
     if(e.target.classList.contains('borrar-icono')) {
-        console.log("Pelicula Borrada");
+        //console.log("Pelicula Borrada");
+        borrarPelicula(nodoFila);
     } else if(e.target.classList.contains('modificar-icono')) {
-        console.log("Pelicula Modificada");
+        //console.log("Pelicula Modificada");
+        modificarPelicula(nodoFila);
     } else if(e.target.classList.contains('destacar-icono')) {
-        console.log("Pelicula Destacada");
+        //console.log("Pelicula Destacada");
+        peliculaDestacada(nodoFila);
     }
-})
+});
 
-function crearFila() {
+function modificarPelicula(nodoFila) {
+    console.log("Ya se modifico");
+}
+
+function borrarPelicula(nodoFila) {
+    nodoFila.remove();
+}
+
+function peliculaDestacada(nodoFila) {
+    const nodoPadre= nodoFila.parentElement;
+
+    //Obtengo el primer nodo hijo del nodo padre
+    const primerHijo= nodoPadre.firstElementChild;
+
+    //Pongo el nodoFila como el primer nodo hijo del nodo padre
+    nodoPadre.insertBefore(nodoFila, primerHijo)
+}
+
+// FORMULARIO PARA INSERTAR PELICULAS
+
+//Traigo el boton "Nuevo +"
+const botonNuevo= document.getElementById('agregar-pelicula');
+
+//Le agrego una escucha de eventos
+botonNuevo.addEventListener('click', () => {
+    //console.log("Ventana Modal para agregar una nueva pelicula");
+    const peliculaNueva= agregarPelicula();
+    crearFila(peliculaNueva);
+    limpiarFormulario();
+});
+
+function limpiarFormulario() {
+    let contenido= document.getElementById('nombre').value;
+    if(contenido != null) {
+        document.getElementById('nombre').value= "";
+        document.getElementById('categoria').value= "";
+        document.getElementById('descripcion').value = "";
+    }
+}
+
+function agregarPelicula() {
+    let nombrePelicula = document.getElementById('nombre').value;
+    let categoriaPelicula = document.getElementById('categoria').value;
+    let descripcion = document.getElementById('descripcion').value;
+
+    return [nombrePelicula, categoriaPelicula, descripcion];
+}
+
+function crearFila(peliculaNueva) {
     const fragmentoFila= document.createDocumentFragment(); // -->creo el fragmento de la pelicula
     const fila= document.createElement('TR'); // --> creo la fila
-    crearCeldas(fila);
+    crearCeldas(fila, peliculaNueva);
     fragmentoFila.appendChild(fila);
     const tabla= document.getElementById('tablaPeliculas');
     tabla.appendChild(fragmentoFila);
 }
 
-function crearCeldas(fila) {
+function crearCeldas(fila, peliculaNueva) {
+    let pos= 0;
     for (let index = 0; index < 6; index++) {
         let celda;
         if(index === 0) {
@@ -50,8 +95,9 @@ function crearCeldas(fila) {
             agregarAtributoValor(celda, 'scope', 'row');
         } else if(index < 4){
             celda= document.createElement('TD');
-            celda.textContent= "algo";
-        } else if( index < 5){
+            celda.textContent= peliculaNueva[pos];
+            pos++;
+        } else if( index === 4){
             celda= document.createElement('TD');
             agregarBotonVisibilidad(celda);
         } else {
@@ -97,3 +143,4 @@ function agregarOpciones(nodo) {
     div.classList.add('d-flex','justify-content-around');
     nodo.appendChild(div);
 }
+
