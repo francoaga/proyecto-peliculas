@@ -42,7 +42,10 @@
 
 /* CSS FOOTER Lean*/
 
-.footerbg {
-    background-color: #141e27 !important;
-    
+.pie {
+  background-color: #141e27;
+}
+
+.redsoc {
+  text-decoration: none;
 }
