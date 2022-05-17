@@ -1,0 +1,10 @@
+*{
+    background-image: url(/Nosotros/imgs/ib-party.png);
+    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.tarjeta {
+    opacity: 0.70;
+    padding: 0%;
+}
